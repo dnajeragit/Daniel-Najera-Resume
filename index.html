@@ -4,152 +4,336 @@
   <meta charset="UTF-8">
   <title>Daniel Nájera De Ferrari - Resume</title>
   <style>
+    :root {
+      --bg: #f3f5f7;
+      --card: #ffffff;
+      --primary: #2b6cb0;
+      --primary-hover: #255a99;
+      --text: #202124;
+      --muted: #5f6a73;
+      --border: #d9e2ec;
+      --shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f4f4f4;
-      color: #333;
+      background: linear-gradient(180deg, #eef3f8 0%, #f7fafc 100%);
+      color: var(--text);
     }
-    .sidebar {
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
       position: fixed;
-      left: 0;
       top: 0;
-      width: 280px;
-      height: 100%;
-      background: #2c3e50;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 32px;
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      backdrop-filter: blur(10px);
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .brand-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .topnav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .topnav button,
+    .topnav a {
+      font-size: 0.9rem;
+      color: var(--text);
+      background: transparent;
+      border: 1px solid transparent;
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .topnav button:hover,
+    .topnav a:hover {
+      background: rgba(43, 108, 176, 0.1);
+      border-color: rgba(43, 108, 176, 0.2);
+      color: var(--primary);
+    }
+
+    .topnav .lang-btn {
+      background: var(--primary);
       color: #fff;
-      padding: 20px;
-      overflow-y: auto;
+      border-color: transparent;
     }
-    .sidebar h1 {
-      font-size: 1.4em;
+
+    .topnav .lang-btn:hover {
+      background: var(--primary-hover);
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 130px 24px 40px;
+      display: grid;
+      grid-template-columns: minmax(260px, 300px) 1fr;
+      gap: 30px;
+    }
+
+    .profile-card,
+    .content-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .profile-card h3 {
       margin-bottom: 10px;
+      font-size: 0.95rem;
+      color: var(--primary);
     }
-    .sidebar p {
-      margin: 5px 0;
+
+    .profile-card p,
+    .profile-card li {
+      margin: 8px 0;
+      line-height: 1.65;
+      color: var(--muted);
     }
-    .sidebar h3 {
+
+    .profile-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .profile-section {
       margin-top: 20px;
-      font-size: 1.1em;
-      border-bottom: 1px solid #444;
-      padding-bottom: 5px;
     }
-    .main {
-      margin-left: 300px;
-      padding: 40px;
+
+    .content-card {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
     }
+
+    .content-header {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .content-header h1 {
+      margin: 0;
+      font-size: 1.85rem;
+      color: var(--text);
+      letter-spacing: -0.03em;
+    }
+
+    .content-header p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.98rem;
+    }
+
     h2 {
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 5px;
-      margin-top: 30px;
+      margin: 0;
+      padding-bottom: 6px;
+      font-size: 1.25rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
     }
+
+    p,
+    li {
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
     ul {
       list-style: none;
       padding: 0;
+      margin: 16px 0 0 0;
     }
+
     li {
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
-    .lang-switch {
-      text-align: right;
-      margin-bottom: 20px;
-    }
-    .lang-switch button {
-      margin-left: 10px;
-      padding: 6px 12px;
-      border: none;
-      border-radius: 4px;
-      background: #0078d7;
-      color: #fff;
-      cursor: pointer;
-    }
-    .lang-switch button:hover {
-      background: #005fa3;
-    }
+
     .section { display: none; }
     .section.active { display: block; }
+
+    @media (max-width: 960px) {
+      .page {
+        grid-template-columns: 1fr;
+        padding: 120px 16px 32px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .topnav {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .lang-switch {
+        justify-content: flex-start;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="sidebar">
-    <h1>Daniel Nájera De Ferrari</h1>
-    <p>📧 danielnajera@protonmail.com</p>
-    <p>📱 +56 9 5181 7385</p>
-
-    <h3>Languages</h3>
-    <p>Español: Nativo</p>
-    <p>English: Advanced (TOEIC)</p>
-
-    <h3>Skills</h3>
-    <p>Scrum, Kanban, Jira</p>
-    <p>Java, .Net, React, Angular</p>
-    <p>Oracle, AWS, Azure</p>
-    <p>Docker, Jenkins, Python, Node.js</p>
-
-    <h3>Links</h3>
-    <p><a href="https://github.com/dnajeragit" style="color:#1abc9c;">GitHub</a></p>
-    <!-- Puedes agregar LinkedIn u otros enlaces aquí -->
-  </div>
-
-  <div class="main">
-    <div class="lang-switch">
-      <button onclick="showLang('es')">Español</button>
-      <button onclick="showLang('en')">English</button>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-title">Daniel Nájera De Ferrari</div>
+      <div class="brand-subtitle">Project Manager · Project Leader · Scrum Master · Business Analyst · Technical Analyst</div>
     </div>
-
-    <!-- Español -->
-    <div id="es" class="section active">
-      <h2>Resumen</h2>
-      <p>Soy líder de proyectos hace 15 años, 10 de estos como Scrum Master con responsabilidades de Business Analyst y Technical Analyst. Experiencia en proyectos IT de hardware y software, transición de metodologías tradicionales a ágiles y proyectos en banca y sector financiero. Habilidades de empatía y relaciones interpersonales que fortalecen la colaboración y potencian equipos.</p>
-
-      <h2>Experiencia Laboral</h2>
-      <ul>
-        <li><strong>2017 - Actual:</strong> Scrum Master en Banco de Chile, Banco Bice y consultoras (Trebol-IT, Nectia, Kibernum). Liderazgo de equipos de 2–8 personas en proyectos de software financiero y seguros.</li>
-        <li><strong>2015 - 2017:</strong> Jefe de Proyectos, Intesis Chile S.A. Coordinación de proyectos de hardware.</li>
-        <li><strong>2014 - 2015:</strong> Jefe de Proyectos y Continuidad de Negocios, Lan Tam Airlines S.A. Responsable de continuidad de aplicaciones de aeropuerto.</li>
-        <li><strong>2011 - 2014:</strong> Jefe de TI y SAP, Soquimich Comercial S.A. Gestión de contratos, infraestructura y aplicaciones.</li>
-      </ul>
-
-      <h2>Formación Académica</h2>
-      <ul>
-        <li>Magíster en Ingeniería Informática – USACH (2008–2009)</li>
-        <li>Ingeniería Informática – USACH (2003–2009)</li>
-        <li>Scrum Master – Diacos Asesores (2017), CertiProf (2020)</li>
-      </ul>
-
-      <h2>Publicaciones</h2>
-      <p>“Predicción temporal no invasiva de la presión intracraneal mediante Máquina de Vectores Soporte no lineal”, Congreso Brasileiro de Engenharia Biomédica, Brasil, 2010.</p>
+    <div class="topnav">
+      <button onclick="scrollToSection('summary')">Summary</button>
+      <button onclick="scrollToSection('experience')">Experience</button>
+      <button onclick="scrollToSection('education')">Education</button>
+      <button onclick="scrollToSection('publications')">Publications</button>
+      <button class="lang-btn" onclick="showLang('es')">Español</button>
+      <button class="lang-btn" onclick="showLang('en')">English</button>
+      <a href="CV-Daniel-Najera.pdf" class="lang-btn" download>Download CV</a>
     </div>
+  </header>
 
-    <!-- English -->
-    <div id="en" class="section">
-      <h2>Summary</h2>
-      <p>I have been a project leader for 15 years, 10 of them as a Scrum Master with responsibilities as Business Analyst and Technical Analyst. Experienced in IT projects involving hardware and software, with expertise in transitioning from traditional methodologies to agile frameworks. Strong background in financial and banking projects. Skilled in empathy and interpersonal relationships, fostering collaboration and enhancing team performance.</p>
+  <main class="page">
+    <section class="profile-card">
+      <div>
+        <p>📧 danielnajera@protonmail.com</p>
+        <p>📱 +56 9 5181 7385</p>
 
-      <h2>Work Experience</h2>
-      <ul>
-        <li><strong>2017 – Present:</strong> Scrum Master – Banco de Chile, Banco Bice, Consulting firms (Trebol-IT, Nectia, Kibernum). Led teams of 2–8 in software projects for financial and insurance clients.</li>
-        <li><strong>2015 – 2017:</strong> Project Manager – Intesis Chile S.A. Managed hardware projects, coordinating professionals and clients.</li>
-        <li><strong>2014 – 2015:</strong> Project Manager & Business Continuity – Lan Tam Airlines S.A. Responsible for airport applications continuity.</li>
-        <li><strong>2011 – 2014:</strong> Head of IT & SAP – Soquimich Comercial S.A. Oversaw IT area, contracts, infrastructure, and applications.</li>
-      </ul>
+        <div class="profile-section">
+          <h3>Languages</h3>
+          <p>Español: Nativo</p>
+          <p>English: Advanced (TOEIC)</p>
+        </div>
 
-      <h2>Education</h2>
-      <ul>
-        <li>Master’s in Computer Engineering – USACH (2008–2009)</li>
-        <li>Bachelor’s in Computer Engineering – USACH (2003–2009)</li>
-        <li>Scrum Master – Diacos Asesores (2017), CertiProf (2020)</li>
-      </ul>
+        <div class="profile-section">
+          <h3>Skills</h3>
+          <p>Scrum, Kanban, Jira</p>
+          <p>Java, .Net, React, Angular</p>
+          <p>Oracle, AWS, Azure</p>
+          <p>Docker, Jenkins, Python, Node.js</p>
+        </div>
 
-      <h2>Publications</h2>
-      <p>“Non-invasive temporal prediction of intracranial pressure using nonlinear Support Vector Machines,” 22nd Brazilian Congress of Biomedical Engineering, Brazil, 2010.</p>
-    </div>
-  </div>
+        <div class="profile-section">
+          <h3>Links</h3>
+          <p><a href="https://www.linkedin.com/in/daniel-najera-de-ferrari/">linkedin/DanielNajera</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-card">
+      <div class="content-header">
+        <h1>Daniel Nájera De Ferrari</h1>
+        <p>📧 danielnajera@protonmail.com · 📱 +56 9 5181 7385</p>
+      </div>
+
+      <!-- Español -->
+      <div id="es" class="section active">
+        <h2 id="summary-es">Resumen</h2>
+        <p>Soy líder de proyectos hace 15 años, 10 de estos como Scrum Master con responsabilidades de Business Analyst y Technical Analyst. Experiencia en proyectos IT de hardware y software, transición de metodologías tradicionales a ágiles y proyectos en banca y sector financiero. Habilidades de empatía y relaciones interpersonales que fortalecen la colaboración y potencian equipos.</p>
+
+        <h2 id="experience-es">Experiencia Laboral</h2>
+        <ul>
+          <li><strong>2017 - Actual:</strong> Scrum Master en Banco de Chile, Banco Bice y consultoras (Trebol-IT, Nectia, Kibernum). Liderazgo de equipos de 2–8 personas en proyectos de software financiero y seguros.</li>
+          <li><strong>2015 - 2017:</strong> Jefe de Proyectos, Intesis Chile S.A. Coordinación de proyectos de hardware.</li>
+          <li><strong>2014 - 2015:</strong> Jefe de Proyectos y Continuidad de Negocios, Lan Tam Airlines S.A. Responsable de continuidad de aplicaciones de aeropuerto.</li>
+          <li><strong>2011 - 2014:</strong> Jefe de TI y SAP, Soquimich Comercial S.A. Gestión de contratos, infraestructura y aplicaciones.</li>
+        </ul>
+
+        <h2 id="education-es">Formación Académica</h2>
+        <ul>
+          <li>Magíster en Ingeniería Informática – USACH (2008–2009)</li>
+          <li>Ingeniería Informática – USACH (2003–2009)</li>
+          <li>Scrum Master – Diacos Asesores (2017), CertiProf (2020)</li>
+        </ul>
+
+        <h2 id="publications-es">Publicaciones</h2>
+        <p>“Predicción temporal no invasiva de la presión intracraneal mediante Máquina de Vectores Soporte no lineal”, Congreso Brasileiro de Engenharia Biomédica, Brasil, 2010.</p>
+      </div>
+
+      <!-- English -->
+      <div id="en" class="section">
+        <h2 id="summary-en">Summary</h2>
+        <p>I have been a project leader for 15 years, 10 of them as a Scrum Master with responsibilities as Business Analyst and Technical Analyst. Experienced in IT projects involving hardware and software, with expertise in transitioning from traditional methodologies to agile frameworks. Strong background in financial and banking projects. Skilled in empathy and interpersonal relationships, fostering collaboration and enhancing team performance.</p>
+
+        <h2 id="experience-en">Work Experience</h2>
+        <ul>
+          <li><strong>2017 – Present:</strong> Scrum Master – Banco de Chile, Banco Bice, Consulting firms (Trebol-IT, Nectia, Kibernum). Led teams of 2–8 in software projects for financial and insurance clients.</li>
+          <li><strong>2015 – 2017:</strong> Project Manager – Intesis Chile S.A. Managed hardware projects, coordinating professionals and clients.</li>
+          <li><strong>2014 – 2015:</strong> Project Manager & Business Continuity – Lan Tam Airlines S.A. Responsible for airport applications continuity.</li>
+          <li><strong>2011 – 2014:</strong> Head of IT & SAP – Soquimich Comercial S.A. Oversaw IT area, contracts, infrastructure, and applications.</li>
+        </ul>
+
+        <h2 id="education-en">Education</h2>
+        <ul>
+          <li>Master’s in Computer Engineering – USACH (2008–2009)</li>
+          <li>Bachelor’s in Computer Engineering – USACH (2003–2009)</li>
+          <li>Scrum Master – Diacos Asesores (2017), CertiProf (2020)</li>
+        </ul>
+
+        <h2 id="publications-en">Publications</h2>
+        <p>“Non-invasive temporal prediction of intracranial pressure using nonlinear Support Vector Machines,” 22nd Brazilian Congress of Biomedical Engineering, Brazil, 2010.</p>
+      </div>
+    </section>
+  </main>
 
   <script>
     function showLang(lang) {
       document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
       document.getElementById(lang).classList.add('active');
+    }
+
+    function scrollToSection(section) {
+      const activeSection = document.querySelector('.section.active');
+      if (!activeSection) return;
+
+      const targetId = `${section}-${activeSection.id}`;
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
   </script>
 </body>
