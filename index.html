@@ -1,31 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <title>Daniel Nájera De Ferrari - Resume</title>
   <style>
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
       background: #f4f4f4;
       color: #333;
     }
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      background: #fff;
-      padding: 40px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 280px;
+      height: 100%;
+      background: #2c3e50;
+      color: #fff;
+      padding: 20px;
+      overflow-y: auto;
     }
-    h1, h2 {
-      text-align: center;
-      color: #222;
+    .sidebar h1 {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+    }
+    .sidebar p {
+      margin: 5px 0;
+    }
+    .sidebar h3 {
+      margin-top: 20px;
+      font-size: 1.1em;
+      border-bottom: 1px solid #444;
+      padding-bottom: 5px;
+    }
+    .main {
+      margin-left: 300px;
+      padding: 40px;
     }
     h2 {
-      margin-top: 30px;
       border-bottom: 1px solid #ddd;
       padding-bottom: 5px;
+      margin-top: 30px;
     }
     ul {
       list-style: none;
@@ -34,18 +50,13 @@
     li {
       margin-bottom: 8px;
     }
-    .contact {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 1.1em;
-    }
     .lang-switch {
-      text-align: center;
+      text-align: right;
       margin-bottom: 20px;
     }
     .lang-switch button {
-      margin: 0 10px;
-      padding: 8px 16px;
+      margin-left: 10px;
+      padding: 6px 12px;
       border: none;
       border-radius: 4px;
       background: #0078d7;
@@ -55,19 +66,32 @@
     .lang-switch button:hover {
       background: #005fa3;
     }
-    .section {
-      display: none;
-    }
-    .section.active {
-      display: block;
-    }
+    .section { display: none; }
+    .section.active { display: block; }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="sidebar">
     <h1>Daniel Nájera De Ferrari</h1>
-    <p class="contact">📧 danielnajera@protonmail.com | 📱 +56 9 5181 7385</p>
+    <p>📧 danielnajera@protonmail.com</p>
+    <p>📱 +56 9 5181 7385</p>
 
+    <h3>Languages</h3>
+    <p>Español: Nativo</p>
+    <p>English: Advanced (TOEIC)</p>
+
+    <h3>Skills</h3>
+    <p>Scrum, Kanban, Jira</p>
+    <p>Java, .Net, React, Angular</p>
+    <p>Oracle, AWS, Azure</p>
+    <p>Docker, Jenkins, Python, Node.js</p>
+
+    <h3>Links</h3>
+    <p><a href="https://github.com/dnajeragit" style="color:#1abc9c;">GitHub</a></p>
+    <!-- Puedes agregar LinkedIn u otros enlaces aquí -->
+  </div>
+
+  <div class="main">
     <div class="lang-switch">
       <button onclick="showLang('es')">Español</button>
       <button onclick="showLang('en')">English</button>
@@ -76,14 +100,14 @@
     <!-- Español -->
     <div id="es" class="section active">
       <h2>Resumen</h2>
-      <p>Soy líder de proyectos hace 15 años, 10 de estos como Scrum Master con responsabilidades de Business Analyst y Technical Analyst. Experiencia en proyectos IT de hardware y software, transición de metodologías tradicionales a ágiles y proyectos en banca y sector financiero.</p>
+      <p>Soy líder de proyectos hace 15 años, 10 de estos como Scrum Master con responsabilidades de Business Analyst y Technical Analyst. Experiencia en proyectos IT de hardware y software, transición de metodologías tradicionales a ágiles y proyectos en banca y sector financiero. Habilidades de empatía y relaciones interpersonales que fortalecen la colaboración y potencian equipos.</p>
 
       <h2>Experiencia Laboral</h2>
       <ul>
-        <li><strong>2017 - Actual:</strong> Scrum Master en Banco de Chile, Banco Bice y consultoras (Trebol-IT, Nectia, Kibernum).</li>
-        <li><strong>2015 - 2017:</strong> Jefe de Proyectos, Intesis Chile S.A.</li>
-        <li><strong>2014 - 2015:</strong> Jefe de Proyectos y Continuidad de Negocios, Lan Tam Airlines S.A.</li>
-        <li><strong>2011 - 2014:</strong> Jefe de TI y SAP, Soquimich Comercial S.A.</li>
+        <li><strong>2017 - Actual:</strong> Scrum Master en Banco de Chile, Banco Bice y consultoras (Trebol-IT, Nectia, Kibernum). Liderazgo de equipos de 2–8 personas en proyectos de software financiero y seguros.</li>
+        <li><strong>2015 - 2017:</strong> Jefe de Proyectos, Intesis Chile S.A. Coordinación de proyectos de hardware.</li>
+        <li><strong>2014 - 2015:</strong> Jefe de Proyectos y Continuidad de Negocios, Lan Tam Airlines S.A. Responsable de continuidad de aplicaciones de aeropuerto.</li>
+        <li><strong>2011 - 2014:</strong> Jefe de TI y SAP, Soquimich Comercial S.A. Gestión de contratos, infraestructura y aplicaciones.</li>
       </ul>
 
       <h2>Formación Académica</h2>
@@ -93,24 +117,21 @@
         <li>Scrum Master – Diacos Asesores (2017), CertiProf (2020)</li>
       </ul>
 
-      <h2>Idiomas</h2>
-      <ul>
-        <li>Español: Nativo</li>
-        <li>Inglés: Avanzado (TOEIC)</li>
-      </ul>
+      <h2>Publicaciones</h2>
+      <p>“Predicción temporal no invasiva de la presión intracraneal mediante Máquina de Vectores Soporte no lineal”, Congreso Brasileiro de Engenharia Biomédica, Brasil, 2010.</p>
     </div>
 
     <!-- English -->
     <div id="en" class="section">
       <h2>Summary</h2>
-      <p>I have been a project leader for 15 years, 10 of them as a Scrum Master with responsibilities as Business Analyst and Technical Analyst. Experienced in IT projects involving hardware and software, with expertise in transitioning from traditional methodologies to agile frameworks. Strong background in financial and banking projects.</p>
+      <p>I have been a project leader for 15 years, 10 of them as a Scrum Master with responsibilities as Business Analyst and Technical Analyst. Experienced in IT projects involving hardware and software, with expertise in transitioning from traditional methodologies to agile frameworks. Strong background in financial and banking projects. Skilled in empathy and interpersonal relationships, fostering collaboration and enhancing team performance.</p>
 
       <h2>Work Experience</h2>
       <ul>
-        <li><strong>2017 – Present:</strong> Scrum Master – Banco de Chile, Banco Bice, Consulting firms (Trebol-IT, Nectia, Kibernum).</li>
-        <li><strong>2015 – 2017:</strong> Project Manager – Intesis Chile S.A.</li>
-        <li><strong>2014 – 2015:</strong> Project Manager & Business Continuity – Lan Tam Airlines S.A.</li>
-        <li><strong>2011 – 2014:</strong> Head of IT & SAP – Soquimich Comercial S.A.</li>
+        <li><strong>2017 – Present:</strong> Scrum Master – Banco de Chile, Banco Bice, Consulting firms (Trebol-IT, Nectia, Kibernum). Led teams of 2–8 in software projects for financial and insurance clients.</li>
+        <li><strong>2015 – 2017:</strong> Project Manager – Intesis Chile S.A. Managed hardware projects, coordinating professionals and clients.</li>
+        <li><strong>2014 – 2015:</strong> Project Manager & Business Continuity – Lan Tam Airlines S.A. Responsible for airport applications continuity.</li>
+        <li><strong>2011 – 2014:</strong> Head of IT & SAP – Soquimich Comercial S.A. Oversaw IT area, contracts, infrastructure, and applications.</li>
       </ul>
 
       <h2>Education</h2>
@@ -120,11 +141,8 @@
         <li>Scrum Master – Diacos Asesores (2017), CertiProf (2020)</li>
       </ul>
 
-      <h2>Languages</h2>
-      <ul>
-        <li>Spanish: Native</li>
-        <li>English: Advanced Working Level (TOEIC)</li>
-      </ul>
+      <h2>Publications</h2>
+      <p>“Non-invasive temporal prediction of intracranial pressure using nonlinear Support Vector Machines,” 22nd Brazilian Congress of Biomedical Engineering, Brazil, 2010.</p>
     </div>
   </div>
 
