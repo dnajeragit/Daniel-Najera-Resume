@@ -26,6 +26,8 @@
       color: var(--text);
     }
 
+    html { scroll-behavior: smooth; }
+
     a {
       color: inherit;
       text-decoration: none;
@@ -99,6 +101,30 @@
       background: var(--primary-hover);
     }
 
+    /* Download buttons in left column */
+    .download-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .download-buttons .download-btn {
+      padding: 8px 12px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 8px 18px rgba(43,108,176,0.12);
+    }
+
+    .download-buttons .download-btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
     .page {
       max-width: 1120px;
       margin: 0 auto;
@@ -108,7 +134,14 @@
       gap: 30px;
     }
 
-    .profile-card,
+    .profile-card {
+      background: linear-gradient(180deg, rgba(214, 210, 210, 0.04), rgba(224, 217, 217, 0.02));
+      border: 1px solid rgba(13, 31, 51, 0.06);
+      border-radius: 4px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
     .content-card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -140,6 +173,66 @@
       margin-top: 20px;
     }
 
+    /* Skills layout and animations */
+    .skills-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .skill-category {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .skill-category .skill-title {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-chip {
+      display: inline-block;
+      padding: 8px 12px;
+      background: linear-gradient(180deg, rgba(43,108,176,0.08), rgba(255,255,255,0.02));
+      border: 1px solid rgba(43,108,176,0.08);
+      border-radius: 4px;
+      color: var(--text);
+      font-size: 0.92rem;
+      box-shadow: 0 6px 18px rgba(15,23,42,0.03);
+      transform: translateY(8px);
+      opacity: 0;
+      transition: transform 260ms cubic-bezier(.2,.9,.2,1), box-shadow 200ms ease;
+      cursor: default;
+      animation: fadeUp 420ms ease forwards;
+      animation-delay: calc(var(--i, 1) * 60ms);
+    }
+
+    .skill-chip:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 14px 36px rgba(15,23,42,0.08);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Skills section uses transparent background so the whole column shows through */
+    .skills-section {
+      background: transparent;
+      border: none;
+      padding: 0;
+      border-radius: 0;
+    }
+
     .content-card {
       display: flex;
       flex-direction: column;
@@ -158,6 +251,7 @@
       font-size: 1.85rem;
       color: var(--text);
       letter-spacing: -0.03em;
+      scroll-margin-top: 120px;
     }
 
     .content-header p {
@@ -167,12 +261,33 @@
       font-size: 0.98rem;
     }
 
+    /* Elegant list cards for experience and education */
+    .experience-list li,
+    .education-list li {
+      border-left: 3px solid rgba(43, 108, 176, 0.12);
+      padding: 12px 16px;
+      margin: 12px 0;
+      border-radius: 4px;
+      background: linear-gradient(180deg, rgba(142, 161, 180, 0.03), rgba(255,255,255,0));
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.03);
+      transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease, border-color 220ms ease;
+      cursor: default;
+    }
+
+    .experience-list li:hover,
+    .education-list li:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.09);
+      border-left-color: var(--primary);
+    }
+
     h2 {
       margin: 0;
       padding-bottom: 6px;
       font-size: 1.25rem;
       border-bottom: 1px solid var(--border);
       color: var(--text);
+      scroll-margin-top: 110px;
     }
 
     p,
@@ -208,6 +323,9 @@
         gap: 12px;
       }
 
+      .content-header h1 { scroll-margin-top: 90px; }
+      h2 { scroll-margin-top: 80px; }
+
       .topnav {
         width: 100%;
         justify-content: flex-start;
@@ -232,26 +350,119 @@
       <button onclick="scrollToSection('publications')">Publications</button>
       <button class="lang-btn" onclick="showLang('es')">Español</button>
       <button class="lang-btn" onclick="showLang('en')">English</button>
-      <a href="CV-Daniel-Najera.pdf" class="lang-btn" download>Download CV</a>
     </div>
   </header>
 
   <main class="page">
     <section class="profile-card">
+      <h3>Downloads</h3>
       <div>
+        <div class="download-buttons">
+          <a class="download-btn" href="CVDanielNajeraDF.pdf" download>Descargar CV (ES)</a>
+          <a class="download-btn" href="CVDanielNajeraDFENG.pdf" download>Download CV (EN)</a>
+        </div>
+
+        <div class="profile-section skills-section">
+          <h3>🛠️ Tech Skills</h3>
+          <div class="skills-grid">
+            <div class="skill-category">
+              <div class="skill-title">Metodologías ágiles</div>
+              <div class="skill-chips">
+                <span class="skill-chip" style="--i:1">Scrum</span>
+                <span class="skill-chip" style="--i:2">Kanban</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <div class="skill-title">Gestión de proyectos IT</div>
+              <div class="skill-chips">
+                <span class="skill-chip" style="--i:3">Software y hardware</span>
+                <span class="skill-chip" style="--i:4">Jira</span>
+                <span class="skill-chip" style="--i:5">Plan.io</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <div class="skill-title">Lenguajes & Plataformas</div>
+              <div class="skill-chips">
+                <span class="skill-chip" style="--i:6">.Net</span>
+                <span class="skill-chip" style="--i:7">Java</span>
+                <span class="skill-chip" style="--i:8">React</span>
+                <span class="skill-chip" style="--i:9">Angular</span>
+                <span class="skill-chip" style="--i:10">PHP</span>
+                <span class="skill-chip" style="--i:11">C</span>
+                <span class="skill-chip" style="--i:12">Python</span>
+                <span class="skill-chip" style="--i:13">Node.js</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <div class="skill-title">DevOps & CI/CD</div>
+              <div class="skill-chips">
+                <span class="skill-chip" style="--i:14">Jenkins</span>
+                <span class="skill-chip" style="--i:15">Docker</span>
+                <span class="skill-chip" style="--i:16">SonarQube</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <div class="skill-title">Bases de datos & Cloud</div>
+              <div class="skill-chips">
+                <span class="skill-chip" style="--i:17">Oracle</span>
+                <span class="skill-chip" style="--i:18">IBM</span>
+                <span class="skill-chip" style="--i:19">Azure</span>
+                <span class="skill-chip" style="--i:20">AWS</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <div class="skill-title">SAP & Infraestructura</div>
+              <div class="skill-chips">
+                <span class="skill-chip" style="--i:21">SAP: procesos, seguridad, roles</span>
+                <span class="skill-chip" style="--i:22">Servidores, redes, storage</span>
+                <span class="skill-chip" style="--i:23">Datacenter</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <div class="skill-title">Auditoría & Continuidad</div>
+              <div class="skill-chips">
+                <span class="skill-chip" style="--i:24">SOX</span>
+                <span class="skill-chip" style="--i:25">Continuidad de negocios</span>
+                <span class="skill-chip" style="--i:26">Gestión de presupuestos</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <div class="skill-title">Arquitectura</div>
+              <div class="skill-chips">
+                <span class="skill-chip" style="--i:27">Web y móviles</span>
+                <span class="skill-chip" style="--i:28">Levantamiento, diseño y pruebas</span>
+              </div>
+            </div>
+
+            <div class="skill-category">
+              <h3>🤝 Soft Skills</h3>
+              <div class="skill-chips">
+                <span class="skill-chip" style="--i:29">Liderazgo</span>
+                <span class="skill-chip" style="--i:30">Empatía</span>
+                <span class="skill-chip" style="--i:31">Resolución de problemas</span>
+                <span class="skill-chip" style="--i:32">Comunicación efectiva</span>
+                <span class="skill-chip" style="--i:33">Adaptabilidad</span>
+                <span class="skill-chip" style="--i:34">Colaboración</span>
+                <span class="skill-chip" style="--i:35">Orientación a resultados</span>
+                <span class="skill-chip" style="--i:36">Gestión del cambio</span>
+                <span class="skill-chip" style="--i:37">Pensamiento analítico</span>
+                <span class="skill-chip" style="--i:38">Capacidad de enseñanza</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="profile-section">
           <h3>Languages</h3>
           <p>Español: Nativo</p>
           <p>English: Advanced (TOEIC)</p>
-        </div>
-
-        <div class="profile-section">
-          <h3>Skills</h3>
-          <p>Scrum, Kanban, Jira</p>
-          <p>Java, .Net, React, Angular</p>
-          <p>Oracle, AWS, Azure</p>
-          <p>Docker, Jenkins, Python, Node.js</p>
         </div>
 
         <div class="profile-section">
@@ -263,6 +474,7 @@
           <h3>Contact Information</h3>
           <p>📧 danielnajera@protonmail.com</p>
           <p>📱 +56 9 5181 7385</p>
+          <p>📍 Santiago, Chile</p>
         </div>
       </div>
     </section>
@@ -270,7 +482,7 @@
     <section class="content-card">
       <div class="content-header">
         <h1>Daniel Nájera De Ferrari</h1>
-        <p>📧 danielnajera@protonmail.com · 📱 +56 9 5181 7385</p>
+        <p>📧 danielnajera@protonmail.com · 📱 +56 9 5181 7385 · 📍 Santiago, Chile</p>
       </div>
 
       <!-- Español -->
@@ -279,7 +491,7 @@
         <p>Soy líder de proyectos hace 15 años, 10 de estos como scrum master con responsabilidades de Bussiness analyst y Thecnical analyst. Cuento con experiencia en proyectos informáticos de hardware y software, entre los que destaco la experiencia en la transición de metodologías tradicionales a metodologías ágiles y proyectos ligados al ámbito financiero/bancario. He trabajado con gobierno y privados, logrando entender los reales problemas y avanzar rápidamente en la solución gracias a mis habilidades de empatizar y generar buenas relaciones interpersonales. Estas también me permiten crear lazos importantes dentro de un equipo de trabajo garantizando la buena convivencia y mejorando las aptitudes de cada integrante. No me cuesta comenzar nuevos desafíos porque aprendo rápidamente y puedo comenzar a generar valor, acordes a las reales necesidades.</p>
 
         <h2 id="experience-es">Experiencia Laboral</h2>
-        <ul>
+        <ul class="experience-list">
           <li><strong>2017 - 2026: Scrum Master en Banco de Chile, Banco Bice y consultoras (Trebol-IT, Nectia, Kibernum).</strong> </li>
           <li>A cargo de equipos entre 2 y 8 personas liderando proyectos de Sw para clientes financieros y seguros principalmente, apoyando al equipo Agile en las distintas ceremonias, destrabando problemas y situaciones, enseñando y aplicando la metodología en su abaníco de posibilidades. Adicionalmente trabajando en enseñar la metodología en las distintas áreas relacionadas y buscando el apoyo mutuo entre estas áreas. Utilizamos Scrum, Kanban, Jira, Plan.io, Oracle, IBM, Azure, Amazon, .Net, Java, React, Angular, PHP, C, Jenkins, Doker, Python, Node JS, Sonar Qube, entre otros. </li>
           <li><strong>2015 - 2017: Jefe de Proyectos, Intesis Chile S.A. </strong></li>
@@ -293,7 +505,7 @@
 
 
         <h2 id="education-es">Formación Académica</h2>
-        <ul>
+        <ul class="education-list">
           <li><strong>Magíster en Ingeniería Informática – USACH (2008–2009)</strong></li>
           <li>Formación sólida en ciencias de la computación y tecnologías de la información, orientada a diseñar y gestionar soluciones estratégicas. Capacita para liderar proyectos complejos, innovar en procesos informáticos y potenciar equipos en sectores públicos y privados.</li>
           <li><strong>Ingeniería Informática – USACH (2003–2009)</strong></li>
@@ -315,7 +527,7 @@
         <p>I have been a project leader for 15 years, 10 of them as a Scrum Master with responsibilities as Business Analyst and Technical Analyst. I have experience in IT projects involving both hardware and software, highlighting my expertise in transitioning from traditional methodologies to agile frameworks, as well as projects in the financial and banking sector. I have worked with both government and private organizations, developing the ability to understand real problems and quickly move toward solutions thanks to my skills in empathy and building strong interpersonal relationships. These also allow me to create meaningful bonds within a team, ensuring good collaboration and enhancing each member’s abilities. I easily take on new challenges, learn quickly, and can start generating value aligned with real needs. </p>
 
         <h2 id="experience-en">Work Experience</h2>
-          <ul>
+        <ul class="experience-list">
             <li><strong>2017 - 2026: Scrum Master at Banco de Chile, Banco Bice and consulting firms (Trebol-IT, Nectia, Kibernum).</strong></li>
             <li>Responsible for teams of 2 to 8 people, leading software projects mainly for financial and insurance clients. Supported Agile teams in ceremonies, problem-solving, teaching and applying the methodology in its full scope. Additionally, promoted agile practices across related areas to foster collaboration. Tools and technologies used: Scrum, Kanban, Jira, Plan.io, Oracle, IBM, Azure, AWS, .Net, Java, React, Angular, PHP, C, Jenkins, Docker, Python, Node.js, SonarQube, among others.</li>           
             <li><strong>2015 - 2017: Project Manager, Intesis Chile S.A.</strong></li>
@@ -328,7 +540,7 @@
 
 
         <h2 id="education-en">Education</h2>
-          <ul>
+        <ul class="education-list">
             <li><strong>Master’s in Computer Engineering – USACH (2008–2009)</strong></li>
             <li>Comprehensive training in computer science and information technologies, focused on designing and managing strategic solutions. Prepares professionals to lead complex projects, innovate IT processes, and strengthen teams across public and private sectors.</li> 
             <li><strong>Bachelor’s in Computer Engineering – USACH (2003–2009)</strong></li>
