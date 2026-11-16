@@ -1,584 +1,599 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Daniel Nájera De Ferrari - Resume</title>
-  <style>
-    :root {
-      --bg: #f3f5f7;
-      --card: #ffffff;
-      --primary: #2b6cb0;
-      --primary-hover: #255a99;
-      --text: #202124;
-      --muted: #5f6a73;
-      --border: #d9e2ec;
-      --shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daniel Nájera De Ferrari | Technology & Delivery Leader</title>
 
-    * {
-      box-sizing: border-box;
-    }
+<style>
+#summary{
+    line-height:1.8;
+    color:#374151;
+    white-space:pre-line;
+    font-size:1rem;
+}
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(180deg, #eef3f8 0%, #f7fafc 100%);
-      color: var(--text);
-    }
+#summary::first-letter{
+    font-size:1.3em;
+    font-weight:bold;
+    color:#2563eb;
+}
+:root{
+    --primary:#2563eb;
+    --primary-dark:#1e40af;
+    --bg:#f5f7fb;
+    --card:#ffffff;
+    --text:#1f2937;
+    --muted:#6b7280;
+    --border:#e5e7eb;
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+}
 
-    html { scroll-behavior: smooth; }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+body{
+    font-family:Segoe UI, Arial, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
 
-    .topbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 32px;
-      background: rgba(255, 255, 255, 0.95);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-      backdrop-filter: blur(10px);
-      z-index: 10;
-    }
+.hero{
+    background:linear-gradient(135deg,#1e40af,#2563eb);
+    color:white;
+    text-align:center;
+    padding:45px 20px;
+}
 
-    .brand {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
+.hero h1{
+    font-size:3rem;
+    margin-bottom:10px;
+}
 
-    .brand-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
+.hero h2{
+    font-weight:400;
+    opacity:.95;
+}
 
-    .brand-subtitle {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
+.kpis{
+    max-width:1100px;
+    margin:-30px auto 30px auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    padding:0 20px;
+}
 
-    .topnav {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+.kpi{
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    text-align:center;
+    box-shadow:var(--shadow);
+}
 
-    .topnav button,
-    .topnav a {
-      font-size: 0.9rem;
-      color: var(--text);
-      background: transparent;
-      border: 1px solid transparent;
-      padding: 10px 14px;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
-    }
+.kpi strong{
+    display:block;
+    font-size:2rem;
+    color:var(--primary);
+}
 
-    .topnav button:hover,
-    .topnav a:hover {
-      background: rgba(43, 108, 176, 0.1);
-      border-color: rgba(43, 108, 176, 0.2);
-      color: var(--primary);
-    }
+.profile-selector{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
 
-    .topnav .lang-btn {
-      background: var(--primary);
-      color: #fff;
-      border-color: transparent;
-    }
+.profile-selector button{
+    border:none;
+    border-radius:8px;
+    padding:12px 20px;
+    background:white;
+    box-shadow:var(--shadow);
+    cursor:pointer;
+    font-weight:600;
+}
 
-    .topnav .lang-btn:hover {
-      background: var(--primary-hover);
-    }
+.profile-selector button:hover{
+    background:var(--primary);
+    color:white;
+}
 
-    /* Download buttons in left column */
-    .download-buttons {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
+.container{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:320px 1fr;
+    gap:25px;
+    padding:20px;
+}
 
-    .download-buttons .download-btn {
-      padding: 8px 12px;
-      background: var(--primary);
-      color: #fff;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 0.9rem;
-      border: 1px solid rgba(255,255,255,0.06);
-      box-shadow: 0 8px 18px rgba(43,108,176,0.12);
-    }
+.sidebar,
+.main{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
 
-    .download-buttons .download-btn:hover {
-      background: var(--primary-hover);
-      transform: translateY(-2px);
-    }
+.card{
+    background:var(--card);
+    border-radius:12px;
+    padding:24px;
+    box-shadow:var(--shadow);
+}
 
-    .page {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 130px 24px 40px;
-      display: grid;
-      grid-template-columns: minmax(260px, 300px) 1fr;
-      gap: 30px;
-    }
+.card h3{
+    color:var(--primary);
+    margin-bottom:15px;
+}
 
-    .profile-card {
-      background: linear-gradient(180deg, rgba(214, 210, 210, 0.04), rgba(224, 217, 217, 0.02));
-      border: 1px solid rgba(13, 31, 51, 0.06);
-      border-radius: 4px;
-      box-shadow: var(--shadow);
-      padding: 28px;
-    }
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
 
-    .content-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      box-shadow: var(--shadow);
-      padding: 28px;
-    }
+.skill{
+    background:#eef4ff;
+    color:#1e40af;
+    padding:8px 12px;
+    border-radius:30px;
+    font-size:.9rem;
+}
 
-    .profile-card h3 {
-      margin-bottom: 10px;
-      font-size: 0.95rem;
-      color: var(--primary);
-    }
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
 
-    .profile-card p,
-    .profile-card li {
-      margin: 8px 0;
-      line-height: 1.65;
-      color: var(--muted);
-    }
+.project{
+    border-left:4px solid var(--primary);
+    background:#f8fafc;
+    padding:15px;
+    border-radius:8px;
+}
 
-    .profile-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+.project h4{
+    margin-bottom:8px;
+}
 
-    .profile-section {
-      margin-top: 20px;
-    }
+.timeline-item{
+    margin-bottom:20px;
+    padding-bottom:20px;
+    border-bottom:1px solid var(--border);
+}
 
-    /* Skills layout and animations */
-    .skills-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
+.timeline-item:last-child{
+    border:none;
+}
 
-    .skill-category {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+.timeline-item h4{
+    margin-bottom:5px;
+}
 
-    .skill-category .skill-title {
-      font-weight: 700;
-      color: var(--primary);
-      font-size: 0.95rem;
-    }
+.timeline-item span{
+    color:var(--muted);
+    font-size:.9rem;
+}
 
-    .skill-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+.download{
+    display:inline-block;
+    background:var(--primary);
+    color:white;
+    padding:10px 15px;
+    border-radius:8px;
+    text-decoration:none;
+    margin-top:10px;
+}
 
-    .skill-chip {
-      display: inline-block;
-      padding: 8px 12px;
-      background: linear-gradient(180deg, rgba(43,108,176,0.08), rgba(255,255,255,0.02));
-      border: 1px solid rgba(43,108,176,0.08);
-      border-radius: 4px;
-      color: var(--text);
-      font-size: 0.92rem;
-      box-shadow: 0 6px 18px rgba(15,23,42,0.03);
-      transform: translateY(8px);
-      opacity: 0;
-      transition: transform 260ms cubic-bezier(.2,.9,.2,1), box-shadow 200ms ease;
-      cursor: default;
-      animation: fadeUp 420ms ease forwards;
-      animation-delay: calc(var(--i, 1) * 60ms);
-    }
+.download:hover{
+    background:var(--primary-dark);
+}
 
-    .skill-chip:hover {
-      transform: translateY(-4px) scale(1.03);
-      box-shadow: 0 14px 36px rgba(15,23,42,0.08);
-    }
+footer{
+    text-align:center;
+    padding:40px;
+    color:var(--muted);
+}
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+@media(max-width:900px){
 
-    /* Skills section uses transparent background so the whole column shows through */
-    .skills-section {
-      background: transparent;
-      border: none;
-      padding: 0;
-      border-radius: 0;
-    }
+.container{
+    grid-template-columns:1fr;
+}
 
-    .content-card {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
+.kpis{
+    grid-template-columns:repeat(2,1fr);
+}
 
-    .content-header {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .content-header h1 {
-      margin: 0;
-      font-size: 1.85rem;
-      color: var(--text);
-      letter-spacing: -0.03em;
-      scroll-margin-top: 120px;
-    }
-
-    .content-header p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 0.98rem;
-    }
-
-    /* Elegant list cards for experience and education */
-    .experience-list li,
-    .education-list li {
-      border-left: 3px solid rgba(43, 108, 176, 0.12);
-      padding: 12px 16px;
-      margin: 12px 0;
-      border-radius: 4px;
-      background: linear-gradient(180deg, rgba(142, 161, 180, 0.03), rgba(255,255,255,0));
-      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.03);
-      transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease, border-color 220ms ease;
-      cursor: default;
-    }
-
-    .experience-list li:hover,
-    .education-list li:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.09);
-      border-left-color: var(--primary);
-    }
-
-    h2 {
-      margin: 0;
-      padding-bottom: 6px;
-      font-size: 1.25rem;
-      border-bottom: 1px solid var(--border);
-      color: var(--text);
-      scroll-margin-top: 110px;
-    }
-
-    p,
-    li {
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 16px 0 0 0;
-    }
-
-    li {
-      margin-bottom: 12px;
-    }
-
-    .section { display: none; }
-    .section.active { display: block; }
-
-    @media (max-width: 960px) {
-      .page {
-        grid-template-columns: 1fr;
-        padding: 120px 16px 32px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .topbar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
-
-      .content-header h1 { scroll-margin-top: 90px; }
-      h2 { scroll-margin-top: 80px; }
-
-      .topnav {
-        width: 100%;
-        justify-content: flex-start;
-      }
-
-      .lang-switch {
-        justify-content: flex-start;
-      }
-    }
-  </style>
+.hero h1{
+    font-size:2rem;
+}
+}
+</style>
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="brand">
-      <div class="brand-title">Daniel Nájera De Ferrari</div>
-      <div class="brand-subtitle">Project Manager · Project Leader · Scrum Master · Business Analyst · Technical Analyst</div>
+
+<section class="hero">
+    <h1>Daniel Nájera De Ferrari</h1>
+    <h2 id="profileTitle">Technology & Delivery Leader</h2>
+</section>
+
+<section class="kpis">
+    <div class="kpi">
+        <strong>15+</strong>
+        Años TI
     </div>
-    <div class="topnav">
-      <button onclick="scrollToSection('summary')">Summary</button>
-      <button onclick="scrollToSection('experience')">Experience</button>
-      <button onclick="scrollToSection('education')">Education</button>
-      <button onclick="scrollToSection('publications')">Publications</button>
-      <button class="lang-btn" onclick="showLang('es')">Español</button>
-      <button class="lang-btn" onclick="showLang('en')">English</button>
+
+    <div class="kpi">
+        <strong>10+</strong>
+        Años Agile
     </div>
-  </header>
 
-  <main class="page">
-    <section class="profile-card">
-      <h3>Downloads</h3>
-      <div>
-        <div class="download-buttons">
-          <a class="download-btn" href="CVDanielNajeraDF.pdf" download>Descargar CV (ES)</a>
-          <a class="download-btn" href="CVDanielNajeraDFENG.pdf" download>Download CV (EN)</a>
+    <div class="kpi">
+        <strong>Banca</strong>
+        Payments Banking & Financial Service
+    </div>
+
+    <div class="kpi">
+        <strong>MSc</strong>
+        Ingeniería Informática
+    </div>
+</section>
+
+<div class="profile-selector">
+    <button onclick="changeProfile('adl')">Agile Delivery Manager</button>
+    <button onclick="changeProfile('itpm')">IT Project Manager</button>
+    <button onclick="changeProfile('tpm')">Technical Project Manager</button>
+</div>
+
+<div class="container">
+
+    <aside class="sidebar">
+
+        <div class="card">
+            <h3>Contacto</h3>
+
+            <p>📧 danielnajera@protonmail.com</p>
+            <p>📱 +56 9 5181 7385</p>
+            <p>📍 Santiago, Chile</p>
+            <p>👤 41 años</p>
+
+            <a id="cvDownload"
+               class="download"
+               href="">
+               Descargar CV
+            </a>
+
         </div>
 
-        <div class="profile-section skills-section">
-          <h3>🛠️ Tech Skills</h3>
-          <div class="skills-grid">
-            <div class="skill-category">
-              <div class="skill-title">Metodologías</div>
-              <div class="skill-chips">
-                <span class="skill-chip" style="--i:1">Tradicional PM</span>
-                <span class="skill-chip" style="--i:2">Scrum</span>
-                <span class="skill-chip" style="--i:3">Kanban</span>
-              </div>
-            </div>
+        <div class="card">
+            <h3>Competencias Clave</h3>
 
-            <div class="skill-category">
-              <div class="skill-title">Gestión de proyectos IT</div>
-              <div class="skill-chips">
-                <span class="skill-chip" style="--i:4">Software</span>
-                <span class="skill-chip" style="--i:5">Hardware</span>
-                <span class="skill-chip" style="--i:6">Jira</span>
-                <span class="skill-chip" style="--i:7">Confluence</span>
-                <span class="skill-chip" style="--i:8">Plan.io</span>
-              </div>
-            </div>
+            <div id="skillsContainer" class="skills"></div>
 
-            <div class="skill-category">
-              <div class="skill-title">Lenguajes & Plataformas</div>
-              <div class="skill-chips">
-                <span class="skill-chip" style="--i:9">.Net</span>
-                <span class="skill-chip" style="--i:10">Java</span>
-                <span class="skill-chip" style="--i:11">React</span>
-                <span class="skill-chip" style="--i:12">Angular</span>
-                <span class="skill-chip" style="--i:13">PHP</span>
-                <span class="skill-chip" style="--i:14">C</span>
-                <span class="skill-chip" style="--i:15">Python</span>
-                <span class="skill-chip" style="--i:16">Node.js</span>
-                <span class="skill-chip" style="--i:17">SQL</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <div class="skill-title">DevOps & CI/CD</div>
-              <div class="skill-chips">
-                <span class="skill-chip" style="--i:18">Jenkins</span>
-                <span class="skill-chip" style="--i:19">Docker</span>
-                <span class="skill-chip" style="--i:20">SonarQube</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <div class="skill-title">Bases de datos & Cloud</div>
-              <div class="skill-chips">
-                <span class="skill-chip" style="--i:21">Oracle</span>
-                <span class="skill-chip" style="--i:22">IBM</span>
-                <span class="skill-chip" style="--i:23">Azure</span>
-                <span class="skill-chip" style="--i:24">AWS</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <div class="skill-title">SAP & Infraestructura</div>
-              <div class="skill-chips">
-                <span class="skill-chip" style="--i:25">SAP: procesos, seguridad, roles</span>
-                <span class="skill-chip" style="--i:26">Servidores, redes, storage</span>
-                <span class="skill-chip" style="--i:27">Datacenter</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <div class="skill-title">Auditoría & Continuidad</div>
-              <div class="skill-chips">
-                <span class="skill-chip" style="--i:28">SOX</span>
-                <span class="skill-chip" style="--i:29">Continuidad de negocios</span>
-                <span class="skill-chip" style="--i:30">Gestión de presupuestos</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <div class="skill-title">Arquitectura</div>
-              <div class="skill-chips">
-                <span class="skill-chip" style="--i:31">Web y móviles</span>
-                <span class="skill-chip" style="--i:32">Levantamiento, diseño y pruebas</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h3>🤝 Soft Skills</h3>
-              <div class="skill-chips">
-                <span class="skill-chip" style="--i:31">Liderazgo</span>
-                <span class="skill-chip" style="--i:32">Empatía</span>
-                <span class="skill-chip" style="--i:33">Resolución de problemas</span>
-                <span class="skill-chip" style="--i:34">Comunicación efectiva</span>
-                <span class="skill-chip" style="--i:35">Adaptabilidad</span>
-                <span class="skill-chip" style="--i:36">Colaboración</span>
-                <span class="skill-chip" style="--i:37">Orientación a resultados</span>
-                <span class="skill-chip" style="--i:38">Gestión del cambio</span>
-                <span class="skill-chip" style="--i:39">Pensamiento analítico</span>
-                <span class="skill-chip" style="--i:40">Capacidad de enseñanza</span>
-              </div>
-            </div>
-          </div>
         </div>
 
-        <div class="profile-section">
-          <h3>Languages</h3>
-          <p>Español: Nativo</p>
-          <p>English: Advanced (TOEIC)</p>
+        <div class="card">
+            <h3>Industrias</h3>
+
+            <p>🏦 Banking</p>
+            <p>💳 Payments</p>
+            <p>🛡 Insurance</p>
+            <p>✈ Airlines</p>
+
+
         </div>
 
-        <div class="profile-section">
-          <h3>Links</h3>
-          <p><a href="https://www.linkedin.com/in/daniel-najera-de-ferrari/">linkedin/DanielNajera</a></p>
+    </aside>
+
+    <main class="main">
+
+        <div class="card">
+
+            <h3>Resumen Profesional</h3>
+
+            <p id="summary"></p>
+
         </div>
-        
-        <div class="profile-section"></div>
-          <h3>Contact Information</h3>
-          <p>📧 danielnajera@protonmail.com</p>
-          <p>📱 +56 9 5181 7385</p>
-          <p>📍 Santiago, Chile</p>
+
+        <div class="card">
+
+<h3>Proyectos Destacados</h3>
+
+<div class="projects">
+
+<div class="project">
+
+<h4>Banco de Chile - 3D Secure</h4>
+
+<p>
+Implementación, evolución y soporte de
+plataformas de autenticación para compras
+internacionales con tarjetas.
+</p>
+
+<p>
+Medios de pago, seguridad transaccional,
+banca digital e integración de plataformas.
+</p>
+
+</div>
+
+<div class="project">
+
+<h4>Banco Bice - Go Bice</h4>
+
+<p>
+Primer onboarding digital del banco,
+integrando biometría y sistemas corporativos.
+</p>
+
+<p>
+Transformación digital y experiencia cliente.
+</p>
+
+</div>
+
+<div class="project">
+
+<h4>VISA</h4>
+
+<p>
+Coordinación de iniciativas y productos VISA
+para bancos e instituciones financieras.
+</p>
+
+<p>
+Payment platforms y servicios financieros.
+</p>
+
+</div>
+
+<div class="project">
+
+<h4>SQM - SAP Governance</h4>
+
+<p>
+Soporte, auditoría y mejora continua
+de procesos SAP corporativos.
+</p>
+
+<p>
+Logística, ventas, finanzas y control interno.
+</p>
+
+</div>
+
+</div>
+
+</div>
+        <div class="card">
+
+            <h3>Experiencia Profesional</h3>
+
+            <div class="timeline-item">
+
+<h4>
+Banco de Chile / Banco Bice
+</h4>
+
+<span>
+2017 - Actualidad
+</span>
+
+<p>
+Liderazgo de iniciativas tecnológicas para organizaciones financieras, bancarias y de seguros, 
+coordinando equipos multidisciplinarios y facilitando la entrega continua de valor mediante marcos Agile.
+</p>
+
+<p>
+Proyectos relacionados con 3DS,
+Portal Empresas, PAC,
+Boletas de Garantía,
+Go Bice y plataformas VISA.
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<h4>
+Intesis Chile
+</h4>
+
+<span>
+2015 - 2017
+</span>
+
+<p>
+Responsable de la planificación y ejecución de proyectos tecnológicos de software 
+e infraestructura para clientes públicos y privados.
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<h4>
+LATAM Airlines
+</h4>
+
+<span>
+2014 - 2015
+</span>
+
+<p>
+Continuidad operacional de aplicaciones
+críticas para procesos aeroportuarios.
+</p>
+
+</div>
+
+<div class="timeline-item">
+
+<h4>
+SQM Comercial
+</h4>
+
+<span>
+2011 - 2014
+</span>
+
+<p>
+Responsable del levantamiento funcional, soporte y mejora continua de la plataforma SAP, 
+colaborando permanentemente con equipos corporativos de SQM para asegurar cumplimiento normativo 
+y eficiencia operacional.
+</p>
+
+</div>
         </div>
-      </div>
-    </section>
 
-    <section class="content-card">
-      <div class="content-header">
-        <h1>Daniel Nájera De Ferrari</h1>
-        <p>📧 danielnajera@protonmail.com · 📱 +56 9 5181 7385 · 📍 Santiago, Chile · 👤 41 años</p>
-      </div>
+    </main>
 
-      <!-- Español -->
-      <div id="es" class="section active">
-        <h2 id="summary-es">Resumen</h2>
-        <p>Soy líder de proyectos hace 15 años, 10 de estos como scrum master con responsabilidades de Bussiness analyst y Thecnical analyst. Cuento con experiencia en proyectos informáticos de hardware y software, entre los que destaco la experiencia en la transición de metodologías tradicionales a metodologías ágiles y proyectos ligados al ámbito financiero/bancario. He trabajado con gobierno y privados, logrando entender los reales problemas y avanzar rápidamente en la solución gracias a mis habilidades de empatizar y generar buenas relaciones interpersonales. Estas también me permiten crear lazos importantes dentro de un equipo de trabajo garantizando la buena convivencia y mejorando las aptitudes de cada integrante. No me cuesta comenzar nuevos desafíos porque aprendo rápidamente y puedo comenzar a generar valor, acordes a las reales necesidades.</p>
+</div>
 
-        <h2 id="experience-es">Experiencia Laboral</h2>
-        <ul class="experience-list">
-          <li><strong>2017 - 2026: Scrum Master en Banco de Chile, Banco Bice y consultoras (Trebol-IT, Nectia, Kibernum).</strong> </li>
-          <li>A cargo de equipos entre 2 y 8 personas liderando proyectos de Sw para clientes financieros y seguros principalmente, apoyando al equipo Agile en las distintas ceremonias, destrabando problemas y situaciones, enseñando y aplicando la metodología en su abaníco de posibilidades. Adicionalmente trabajando en enseñar la metodología en las distintas áreas relacionadas y buscando el apoyo mutuo entre estas áreas. Utilizamos Scrum, Kanban, Jira, Plan.io, Oracle, IBM, Azure, Amazon, .Net, Java, React, Angular, PHP, C, Jenkins, Doker, Python, Node JS, Sonar Qube, entre otros. </li>
-          <li><strong>2015 - 2017: Jefe de Proyectos, Intesis Chile S.A. </strong></li>
-          <li>A cargo de proyectos de Hw y Sw, coordinando a los profesionales y equipos de trabajo necesarios para la planificación e implementación, siguiendo las propuestas de venta y presupuestos en los clientes gubernamentales y privados </li>
-          <li><strong>2014 - 2015: Jefe de Proyectos y Continuidad de Negocios, Lan Tam Airlines S.A.</strong></li>
-          <li>A cargo del área de continidad de negocios de aplicaciones de aeropuerto, con 3 personas a cargo y cordinando incidencias en todo horario, soporte de negocio y mejora continua en conjunto con proveedores externos. </li>
-          <li><strong>2011 - 2014: Jefe de TI y SAP, Soquimich Comercial S.A.</strong> </li> 
-          <li>A cargo del área de TI, revisando contratos, equipos de trabajo, infraestructura y dando soporte a las aplicaciones requeridas por la empresa, especialmente ERP SAP con modulos FI, CO, MM y SD </li>
-        </ul>
+<footer>
+Technology & Delivery Leader
+</footer>
+
+<script>
 
 
+const profiles = {
 
-        <h2 id="education-es">Formación Académica</h2>
-        <ul class="education-list">
-          <li><strong>Magíster en Ingeniería Informática – USACH (2008–2009)</strong></li>
-          <li>Formación sólida en ciencias de la computación y tecnologías de la información, orientada a diseñar y gestionar soluciones estratégicas. Capacita para liderar proyectos complejos, innovar en procesos informáticos y potenciar equipos en sectores públicos y privados.</li>
-          <li><strong>Ingeniería Informática – USACH (2003–2009)</strong></li>
-          <li>Programa profesional con más de 30 años de trayectoria, enfocado en inteligencia computacional, optimización y sistemas escalables. Forma specialistas capaces de aplicar I+D, liderar proyectos tecnológicos y generar soluciones innovadoras en sectores industriales y académicos.</li>
-          <li><strong>Scrum Master – Diacos Asesores (2017), CertiProf (2020)</strong></li>
-          <li> profesionales enfocadas en gestión ágil de proyectos, metodología Scrum y liderazgo de equipos. Entregaron conocimientos avanzados en marcos ágiles, mejora continua y facilitación efectiva de ceremonias, permitiendo la entrega exitosa de proyectos TI en diversas industrias.</li>
-        </ul>
+adl: {
 
-        <h2 id="publications-es">Publicaciones</h2>
-          <ul>
-            <li><strong>Inteligencia Artificial & Aprendizaje Automático</strong></li>
-            <li><p>“Predicción temporal no invasiva de la presión intracraneal mediante Máquina de Vectores Soporte no lineal”, Congreso Brasileiro de Engenharia Biomédica, Brasil, 2010.</p></li>
-          </ul> 
-      </div>
+title: "Agile Delivery Manager",
 
-      <!-- English -->
-      <div id="en" class="section">
-        <h2 id="summary-en">Summary</h2>
-        <p>I have been a project leader for 15 years, 10 of them as a Scrum Master with responsibilities as Business Analyst and Technical Analyst. I have experience in IT projects involving both hardware and software, highlighting my expertise in transitioning from traditional methodologies to agile frameworks, as well as projects in the financial and banking sector. I have worked with both government and private organizations, developing the ability to understand real problems and quickly move toward solutions thanks to my skills in empathy and building strong interpersonal relationships. These also allow me to create meaningful bonds within a team, ensuring good collaboration and enhancing each member’s abilities. I easily take on new challenges, learn quickly, and can start generating value aligned with real needs. </p>
+download:"DanielNajera_ADL.pdf",
 
-        <h2 id="experience-en">Work Experience</h2>
-        <ul class="experience-list">
-            <li><strong>2017 - 2026: Scrum Master at Banco de Chile, Banco Bice and consulting firms (Trebol-IT, Nectia, Kibernum).</strong></li>
-            <li>Responsible for teams of 2 to 8 people, leading software projects mainly for financial and insurance clients. Supported Agile teams in ceremonies, problem-solving, teaching and applying the methodology in its full scope. Additionally, promoted agile practices across related areas to foster collaboration. Tools and technologies used: Scrum, Kanban, Jira, Plan.io, Oracle, IBM, Azure, AWS, .Net, Java, React, Angular, PHP, C, Jenkins, Docker, Python, Node.js, SonarQube, among others.</li>           
-            <li><strong>2015 - 2017: Project Manager, Intesis Chile S.A.</strong></li>
-            <li>Managed hardware and software projects, coordinating professionals and work teams required for planning and implementation, following sales proposals and budgets for government and private clients.</li>
-            <li><strong>2014 - 2015: Project Manager & Business Continuity, Lan Tam Airlines S.A.</strong></li>
-            <li>Responsible for the business continuity of airport applications, leading a team of 3 people and coordinating incidents at all times, business support and continuous improvement together with external providers.</li>
-            <li><strong>2011 - 2014: Head of IT & SAP, Soquimich Comercial S.A.</strong></li>
-            <li>Oversaw the IT area, reviewing contracts, work teams, infrastructure and supporting applications required by the company, especially SAP ERP with FI, CO, MM and SD modules.</li>
-          </ul>
+summary: `
+Profesional de Tecnología de la Información con más de 15 años de experiencia liderando proyectos tecnológicos, iniciativas de transformación digital y equipos multidisciplinarios en organizaciones de alta complejidad.
 
+Experiencia en sectores financieros, banca, seguros, aerolíneas, minería, gobierno y consultoría tecnológica, participando en proyectos de software, infraestructura, continuidad operacional, plataformas SAP, modernización tecnológica y adopción de metodologías ágiles.
 
-        <h2 id="education-en">Education</h2>
-        <ul class="education-list">
-            <li><strong>Master’s in Computer Engineering – USACH (2008–2009)</strong></li>
-            <li>Comprehensive training in computer science and information technologies, focused on designing and managing strategic solutions. Prepares professionals to lead complex projects, innovate IT processes, and strengthen teams across public and private sectors.</li> 
-            <li><strong>Bachelor’s in Computer Engineering – USACH (2003–2009)</strong></li>
-            <li>Professional program with over 30 years of tradition, emphasizing computational intelligence, optimization, and scalable systems. Develops specialists capable of applying R&D, leading technological projects, and delivering innovative solutions in industrial and academic environments.</li>  
-            <li><strong>Scrum Master – Diacos Asesores (2017), CertiProf (2020)</strong></li>
-            <li>Professional certifications focused on agile project management, Scrum methodology, and team leadership. Provided advanced knowledge in agile frameworks, continuous improvement, and effective facilitation of ceremonies, enabling successful delivery of IT projects across diverse industries.</li>
-          </ul>
+Durante los últimos 10 años ha liderado equipos Agile en instituciones financieras y compañías tecnológicas, facilitando la coordinación entre áreas de negocio y tecnología para asegurar la entrega continua de valor, la mejora de procesos y la ejecución exitosa de iniciativas estratégicas.
 
+Destaca por su capacidad para construir relaciones de confianza con stakeholders, impulsar la colaboración entre equipos multidisciplinarios y transformar necesidades del negocio en soluciones tecnológicas sostenibles.
+`,
 
-        <h2 id="publications-en">Publications</h2>
-        <ul>
-          <li><strong>Artificial Intelligence & Machine Learning</strong></li>
-          <li><p>“Non-invasive temporal prediction of intracranial pressure using nonlinear Support Vector Machines,” 22nd Brazilian Congress of Biomedical Engineering, Brazil, 2010.</p></li>
-        </ul>
-      </div>
-    </section>
-  </main>
+skills: [
+"Agile Delivery",
+"Scrum",
+"Kanban",
+"Leadership",
+"Stakeholder Management",
+"Coaching",
+"Delivery Governance",
+"Risk Management",
+"Continuous Improvement",
+"Change Management"
+]
 
-  <script>
-    function showLang(lang) {
-      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(lang).classList.add('active');
-    }
+},
 
-    function scrollToSection(section) {
-      const activeSection = document.querySelector('.section.active');
-      if (!activeSection) return;
+itpm: {
 
-      const targetId = `${section}-${activeSection.id}`;
-      const target = document.getElementById(targetId);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-  </script>
+title: "IT Project Manager",
+
+download:"DanielNajera_ITPM.pdf",
+
+summary: `
+IT Project Manager con más de 15 años de experiencia liderando proyectos tecnológicos para instituciones financieras, aerolíneas, minería, organismos públicos y empresas privadas.
+
+Experiencia gestionando iniciativas de software, infraestructura, continuidad operacional, SAP, medios de pago y transformación digital, coordinando equipos técnicos, proveedores y áreas de negocio para asegurar el cumplimiento de alcance, plazo y calidad.
+
+Ha participado en proyectos relacionados con banca digital, plataformas transaccionales, onboarding digital, medios de pago y modernización tecnológica, aportando una combinación de liderazgo, gestión y conocimiento técnico que facilita la ejecución exitosa de proyectos complejos.
+
+Posee una sólida formación como Ingeniero Informático y Magíster en Ingeniería Informática, permitiéndole actuar como nexo efectivo entre la estrategia de negocio y la implementación tecnológica.
+`,
+
+skills: [
+"Project Management",
+"Project Governance",
+"Stakeholder Management",
+"Vendor Management",
+"Risk Management",
+"Strategic Planning",
+"Digital Transformation",
+"Financial Services",
+"Banking",
+"Business Continuity"
+]
+
+},
+
+tpm: {
+
+title: "Technical Project Manager",
+
+download:"DanielNajera_TPM.pdf",
+
+summary: `
+Technical Project Manager e Ingeniero Informático con más de 15 años de experiencia liderando proyectos de software, infraestructura e integración tecnológica en organizaciones de alta complejidad.
+
+Experiencia coordinando iniciativas relacionadas con desarrollo de software, plataformas financieras, medios de pago, SAP, cloud computing, arquitecturas corporativas y transformación digital, trabajando estrechamente con áreas de negocio, arquitectura, desarrollo, QA y operaciones.
+
+Combina capacidades de liderazgo y gestión con una sólida base técnica, permitiéndole comprender desafíos tecnológicos complejos, evaluar alternativas de solución y coordinar equipos multidisciplinarios para entregar resultados alineados con los objetivos estratégicos de la organización.
+
+Ha participado en proyectos críticos para banca, servicios financieros, aerolíneas y minería, contribuyendo a la evolución de plataformas corporativas, sistemas transaccionales y soluciones digitales de alto impacto.
+`,
+
+skills: [
+"Software Delivery",
+"Application Architecture",
+"Cloud Computing",
+"Azure",
+"AWS",
+"Systems Integration",
+"Technical Leadership",
+"DevOps",
+"SAP",
+"Financial Platforms"
+]
+
+}
+
+};
+
+function changeProfile(id){
+
+document.getElementById("profileTitle").innerText =
+profiles[id].title;
+
+document.getElementById("summary").innerText =
+profiles[id].summary;
+
+document.getElementById("cvDownload").href =
+profiles[id].download;
+
+const container =
+document.getElementById("skillsContainer");
+
+container.innerHTML = "";
+
+profiles[id].skills.forEach(skill => {
+
+container.innerHTML +=
+`<span class="skill">${skill}</span>`;
+
+});
+
+}
+
+changeProfile('adl');
+
+</script>
+
 </body>
 </html>
